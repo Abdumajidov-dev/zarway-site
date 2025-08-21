@@ -1,0 +1,109 @@
+/* Umumiy stillar */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1a0a5c; /* fon rangi */
+  color: white;
+  text-align: center;
+}
+
+.container {
+  max-width: 450px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Intro matn */
+.intro {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Nega aynan biz */
+.section-title {
+  margin: 20px 0;
+  font-size: 20px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 10px 0;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.feature img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.feature span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Vizual (rasmlar) */
+.visual {
+  position: relative;
+  margin: 40px 0;
+}
+
+.boxes {
+  width: 250px;
+}
+
+.shield {
+  width: 140px;
+  position: absolute;
+  right: 50px;
+  top: -30px;
+}
+
+/* Contact */
+.contact {
+  margin-top: 30px;
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  background: #0c8f45;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.phone img {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.socials {
+  margin-top: 15px;
+}
+
+.socials a {
+  margin: 0 10px;
+}
+
+.socials img {
+  width: 35px;
+  height: 35px;
+}
