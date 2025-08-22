@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZarWay Logistics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #1a0d4a 0%, #2d1b69 30%, #3a2078 70%, #1a0d4a 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            width: 375px;
+            max-width: 100%;
+            padding: 30px 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* 1. Company Icon (placeholder) */
+        .company-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ff6b35 0%, #ffa500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .company-icon::before {
+            content: '';
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            top: 50%;
+            left: 50%;
+            margin-left: -14px;
+            margin-top: -14px;
+        }
+
+        /* 2. Company Name */
+        .company-name {
+            font-size: 34px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* 3. Logistics subtitle */
+        .logistics-subtitle {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+        }
+
+        /* 4. Info box with border */
+        .info-box {
+            background: rgba(86, 70, 126, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: white;
+            font-weight: 400;
+        }
+
+        /* 5. "Nega aynan biz?" section title */
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 35px 0 25px;
+            position: relative;
+            color: white;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 70px;
+            height: 1px;
+            background: white;
+            transform: translateY(-50%);
+        }
+
+        .section-title::before {
+            left: -85px;
+        }
+
+        .section-title::after {
+            right: -85px;
+        }
+
+        /* 6. Four services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 40px;
+            height: 200px;
+        }
+
+        .service-item {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 15px 10px;
+            backdrop-filter: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* Left side items - justify to left */
+        .service-item:nth-child(1),
+        .service-item:nth-child(3) {
+            justify-content: flex-start;
+        }
+
+        /* Right side items - justify to right */
+        .service-item:nth-child(2),
+        .service-item:nth-child(4) {
+            justify-content: flex-end;
+        }
+
+        .service-item:hover {
+            transform: translateX(5px);
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #2d1b69;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+
+        .service-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* 7. Large image section (placeholder) */
+        .image-section {
+            margin: 40px 0;
+            position: relative;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(86, 70, 126, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .placeholder-content {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .package-box {
+            background: linear-gradient(45deg, #d2691e 0%, #daa520 100%);
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .box1 { width: 45px; height: 45px; }
+        .box2 { width: 45px; height: 60px; }
+        .box3 { width: 40px; height: 50px; }
+        .box4 { width: 45px; height: 65px; }
+
+        .package-box::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .package-box::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 6px;
+            right: 6px;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+        }
+
+        .shield {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 100px;
+        }
+
+        .shield-outer {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #333 0%, #555 100%);
+            clip-path: polygon(50% 0%, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%);
+            border: 2px solid #ff6b35;
+            position: relative;
+        }
+
+        .shield-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55%;
+            height: 50%;
+            background: linear-gradient(145deg, #ff6b35 0%, #ffa500 100%);
+            clip-path: polygon(50% 0%, 80% 30%, 80% 70%, 50% 100%, 20% 70%, 20% 30%);
+        }
+
+        /* 8. Bottom contact section */
+        .contact-section {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .contact-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-right {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .phone-icon {
+            background: #25D366;
+        }
+
+        .instagram-icon {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+        }
+
+        .contact-text {
+            font-size: 15px;
+            color: white;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                width: 100%;
+                padding: 25px 20px;
+            }
+
+            .section-title::before,
+            .section-title::after {
+                width: 50px;
+            }
+
+            .section-title::before {
+                left: -65px;
+            }
+
+            .section-title::after {
+                right: -65px;
+            }
+
+            .contact-section {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .contact-right {
+                align-items: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. Company Icon -->
+        <div class="company-icon"></div>
+
+        <!-- 2. Company Name -->
+        <h1 class="company-name">ZarWay</h1>
+
+        <!-- 3. Logistics subtitle -->
+        <p class="logistics-subtitle">logistics</p>
+
+        <!-- 4. Info box with border -->
+        <div class="info-box">
+            <p class="info-text">ZarWay Logistics — Biz chet eldan yuklarni qabul qilib, bojxona rasmiylashtiruvj, omborlash va eshikdan eshikkacha yetkazib berish xizmatlarini taqdim etamiz. Maqsadimiz — yuklarizni o'z vaqtida, xavfsiz va sifatli yetkazish.</p>
+        </div>
+
+        <!-- 5. Section title -->
+        <h2 class="section-title">Nega aynan biz?</h2>
+
+        <!-- 6. Four services in grid -->
+        <div class="services-grid">
+            <!-- Top left: Tezkor -->
+            <div class="service-item">
+                <div class="service-icon">⚡</div>
+                <div class="service-title">Tezkor</div>
+            </div>
+            
+            <!-- Top right: Ishonchli -->
+            <div class="service-item">
+                <div class="service-icon">✓</div>
+                <div class="service-title">Ishonchli</div>
+            </div>
+            
+            <!-- Bottom left: Qulay -->
+            <div class="service-item">
+                <div class="service-icon">👋</div>
+                <div class="service-title">Qulay</div>
+            </div>
+            
+            <!-- Bottom right: Shaffof -->
+            <div class="service-item">
+                <div class="service-icon">🔄</div>
+                <div class="service-title">Shaffof</div>
+            </div>
+        </div>
+
+        <!-- 7. Large image section -->
+        <div class="image-section">
+            <div class="placeholder-content">
+                <div class="package-box box1"></div>
+                <div class="package-box box2"></div>
+                <div class="package-box box3"></div>
+                <div class="package-box box4"></div>
+            </div>
+            <div class="shield">
+                <div class="shield-outer">
+                    <div class="shield-inner"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Bottom contact section -->
+        <div class="contact-section">
+            <!-- Left: Phone -->
+            <div class="contact-left">
+                <div class="contact-item" onclick="window.open('tel:+998951270000', '_self')">
+                    <div class="contact-icon phone-icon">📞</div>
+                    <span class="contact-text">+998 95 127 0000</span>
+                </div>
+            </div>
+
+            <!-- Right: Instagram -->
+            <div class="contact-right">
+                <div class="contact-item" onclick="window.open('https://instagram.com/zarway_logistics', '_blank')">
+                    <div class="contact-icon instagram-icon">📷</div>
+                    <span class="contact-text">@zarway_logistics</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Service items hover effect
+            const serviceItems = document.querySelectorAll('.service-item');
+            serviceItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'translateY(-2px) scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-2px)';
+                    }, 150);
+                });
+            });
+
+            // Contact items click effect
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1.05)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 100);
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
